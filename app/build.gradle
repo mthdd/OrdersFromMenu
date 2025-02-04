@@ -1,6 +1,8 @@
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
+    id 'kotlin-kapt'
+    id 'androidx.navigation.safeargs.kotlin' // Если используете Navigation
 }
 
 android {
@@ -9,58 +11,60 @@ android {
 
     defaultConfig {
         applicationId "com.menu.orders"
-        minSdk 21
+        minSdk 24
         targetSdk 32
         versionCode 1
         versionName "1.0"
 
+        // Для AGP 8.0+ требуется явное указание
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
     buildTypes {
         release {
             minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt')
         }
     }
+
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_17 // Требуется для AGP 8.0+
+        targetCompatibility JavaVersion.VERSION_17
     }
+
     kotlinOptions {
-        jvmTarget = '1.8'
+        jvmTarget = '17' // Обновить до Java 17
     }
+
     buildFeatures {
-        viewBinding = true
+        viewBinding true
     }
 }
 
 dependencies {
-    implementation 'com.squareup.retrofit2:retrofit:2.9.0'
-    implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
+    // Явно указываем версии для совместимости
+    implementation 'androidx.core:core-ktx:1.10.1'
+    implementation 'androidx.appcompat:appcompat:1.6.1'
+    implementation 'com.google.android.material:material:1.9.0'
 
-    def room_version = "2.5.2"
+    // Room 2.5.1 - последняя версия, совместимая с compileSdk 32
+    def room_version = "2.5.1"
     implementation "androidx.room:room-runtime:$room_version"
     implementation "androidx.room:room-ktx:$room_version"
     implementation "androidx.room:room-compiler:$room_version"
 
-    // Для SQLite используйте:
-    implementation "androidx.sqlite:sqlite:2.3.1"
-    implementation "androidx.sqlite:sqlite-framework:2.3.1"
+    // Retrofit с явным указанием версий
+    implementation 'com.squareup.retrofit2:retrofit:2.9.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
 
-    // Для arch.core:
-    implementation "androidx.arch.core:core-runtime:2.1.0"
+    // Lifecycle components
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.1'
+    implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.6.1'
+}
 
-    implementation 'androidx.recyclerview:recyclerview:1.2.1'
-    implementation 'com.github.javafaker:javafaker:1.0.2'
-    implementation 'com.github.bumptech.glide:glide:4.14.2'
-
-    implementation 'androidx.core:core-ktx:1.7.0'
-    implementation 'androidx.appcompat:appcompat:1.5.1'
-    implementation 'com.google.android.material:material:1.7.0'
-    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
-
-    testImplementation 'junit:junit:4.13.2'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.4'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.0'
+configurations.all {
+    resolutionStrategy {
+        force 'androidx.arch.core:core-runtime:2.2.0'
+        force 'androidx.lifecycle:lifecycle-runtime:2.6.1'
+    }
 }

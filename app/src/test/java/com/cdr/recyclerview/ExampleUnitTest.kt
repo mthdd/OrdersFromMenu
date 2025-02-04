@@ -1,4 +1,4 @@
-package com.cdr.recyclerview
+package com.menu.orders
 
 import org.junit.Test
 

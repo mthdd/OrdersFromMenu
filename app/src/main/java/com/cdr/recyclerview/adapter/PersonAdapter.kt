@@ -1,4 +1,4 @@
-package com.cdr.recyclerview.adapter
+package com.menu.orders.adapter
 
 import android.view.LayoutInflater
 import android.view.Menu
@@ -9,9 +9,9 @@ import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.cdr.recyclerview.R
-import com.cdr.recyclerview.databinding.ItemPersonBinding
-import com.cdr.recyclerview.model.Person
+import com.menu.orders.R
+import com.menu.orders.databinding.ItemPersonBinding
+import com.menu.orders.model.Person
 
 // DiffUtil, который не вошел в статью:
 class PersonDiffUtil(

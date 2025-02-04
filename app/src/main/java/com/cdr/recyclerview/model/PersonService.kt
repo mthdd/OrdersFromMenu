@@ -1,4 +1,4 @@
-package com.cdr.recyclerview.model
+package com.menu.orders.model
 
 import com.github.javafaker.Faker
 import java.util.*

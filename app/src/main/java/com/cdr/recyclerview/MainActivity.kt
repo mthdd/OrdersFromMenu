@@ -1,15 +1,15 @@
-package com.cdr.recyclerview
+package com.menu.orders
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.cdr.recyclerview.adapter.PersonActionListener
-import com.cdr.recyclerview.adapter.PersonAdapter
-import com.cdr.recyclerview.databinding.ActivityMainBinding
-import com.cdr.recyclerview.model.Person
-import com.cdr.recyclerview.model.PersonListener
-import com.cdr.recyclerview.model.PersonService
+import com.menu.orders.adapter.PersonActionListener
+import com.menu.orders.adapter.PersonAdapter
+import com.menu.orders.databinding.ActivityMainBinding
+import com.menu.orders.model.Person
+import com.menu.orders.model.PersonListener
+import com.menu.orders.model.PersonService
 
 class MainActivity : AppCompatActivity() {
 

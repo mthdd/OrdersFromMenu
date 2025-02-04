@@ -85,7 +85,7 @@ class PersonAdapter(private val personActionListener: PersonActionListener) :
             Glide.with(context).load(person.photo)
                 .circleCrop() // Отрисовка фотографии пользователя с помощью библиотеки Glide
                 .error(R.drawable.ic_person)
-                .placeholder(R.drawable.ic_person).into(imageView)
+             //   .placeholder(R.drawable.ic_person).into(imageView)
         }
     }
 

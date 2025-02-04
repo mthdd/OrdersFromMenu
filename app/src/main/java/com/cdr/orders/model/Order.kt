@@ -1,21 +1,24 @@
 package com.cdr.orders.model
 
 import android.graphics.Color
-import java.util.Date
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 
-// Order.kt
+@Entity(tableName = "orders")
 data class Order(
-    val localId: String, // Сгенерированный номер (формат: день-месяц-год-номер)
+    @PrimaryKey(autoGenerate = false)
     val bitrixId: Int,
+    val localId: String,
     val type: OrderType,
     val status: OrderStatus,
     val totalAmount: Double,
     val items: List<OrderItem>,
     val comment: String?,
-    val createdAt: Date,
-    var isPaid: Boolean = false,
-    var isReadyForShipping: Boolean = false
-)
+    val createdAt: Long
+) {
+    // Для Room требуется пустой конструктор
+    constructor() : this(0, "", OrderType.IN_HOUSE, OrderStatus.NEW, 0.0, emptyList(), null, 0L)
+}
 
 enum class OrderType {
     IN_HOUSE, TAKEAWAY, DELIVERY

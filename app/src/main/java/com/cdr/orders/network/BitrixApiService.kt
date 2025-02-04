@@ -1,5 +1,12 @@
 package com.cdr.orders.network
 
+import com.cdr.orders.model.Order
+import retrofit2.Response
+import retrofit2.http.Body
+import retrofit2.http.GET
+import retrofit2.http.POST
+import retrofit2.http.Path
+
 // BitrixApiService.kt
 interface BitrixApiService {
     @GET("orders")

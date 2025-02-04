@@ -9,9 +9,13 @@ import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.cdr.orders.model.Order
 import com.menu.orders.R
 import com.menu.orders.databinding.ItemPersonBinding
 import com.menu.orders.model.Person
+import ru.here.menu.R
+import ru.here.menu.databinding.ItemOrderBinding
+import ru.here.menu.databinding.ItemPersonBinding
 
 // DiffUtil, который не вошел в статью:
 class PersonDiffUtil(
@@ -40,29 +44,23 @@ interface PersonActionListener {
     fun onPersonMove(person: Person, moveBy: Int)
 }
 
-class PersonAdapter(private val personActionListener: PersonActionListener) :
-    RecyclerView.Adapter<PersonAdapter.PersonViewHolder>(), View.OnClickListener {
+class PersonAdapter(
+    private val orders: List<Order>,
+    private val onItemClick: (Order) -> Unit
+) : RecyclerView.Adapter<PersonAdapter.ViewHolder>() {
 
-    var data: List<Person> = emptyList()
-        set(newValue) {
-            val personDiffUtil = PersonDiffUtil(field, newValue)
-            val personDiffUtilResult = DiffUtil.calculateDiff(personDiffUtil)
-            field = newValue
-            personDiffUtilResult.dispatchUpdatesTo(this@PersonAdapter)
-        }
+    inner class ViewHolder(val binding: ItemOrderBinding) :
+        RecyclerView.ViewHolder(binding.root)
 
-    override fun getItemCount(): Int = data.size // Количество элементов в списке данных
-
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PersonViewHolder {
-        val inflater = LayoutInflater.from(parent.context)
-        val binding = ItemPersonBinding.inflate(inflater, parent, false)
-
-        binding.root.setOnClickListener(this)
-        binding.more.setOnClickListener(this)
-        binding.likedImageView.setOnClickListener(this)
-
-        return PersonViewHolder(binding)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+        val binding = ItemOrderBinding.inflate(
+            LayoutInflater.from(parent.context),
+            parent,
+            false
+        )
+        return ViewHolder(binding)
     }
+}
 
     override fun onBindViewHolder(holder: PersonViewHolder, position: Int) {
         val person = data[position] // Получение человека из списка данных по позиции
@@ -124,11 +122,4 @@ class PersonAdapter(private val personActionListener: PersonActionListener) :
         popupMenu.show()
     }
 
-    companion object {
-        private const val ID_MOVE_UP = 1
-        private const val ID_MOVE_DOWN = 2
-        private const val ID_REMOVE = 3
-    }
 
-    class PersonViewHolder(val binding: ItemPersonBinding) : RecyclerView.ViewHolder(binding.root)
-}

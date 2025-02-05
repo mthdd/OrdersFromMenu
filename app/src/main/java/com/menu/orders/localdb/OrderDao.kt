@@ -5,14 +5,13 @@ import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import com.menu.orders.model.Order
-import com.menu.orders.model.OrderItem
 import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface OrderDao {
-    @Query("SELECT * FROM orders")
-    suspend fun getAll(): List<Order>
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insertAll(orders: kotlin.collections.List<com.menu.orders.model.Order>) // Изменено: принимает List<Order>
 
-    @Insert
-    suspend fun insertAll(orders: List<Order>)
+    @Query("SELECT * FROM orders")
+    fun getAll(): Flow<List<Order>>
 }

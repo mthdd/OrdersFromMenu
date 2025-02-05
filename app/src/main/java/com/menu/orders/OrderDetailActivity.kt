@@ -1,5 +1,13 @@
 package com.menu.orders
 
+import android.app.AlertDialog
+import android.os.Bundle
+import android.widget.Button
+import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
+import com.menu.orders.model.Order
+import com.menu.orders.model.OrderStatus
+
 // OrderDetailActivity.kt
 class OrderDetailActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -9,7 +17,7 @@ class OrderDetailActivity : AppCompatActivity() {
         val order = intent.getParcelableExtra<Order>("ORDER")!!
 
         // Заполнение данных
-        findViewById<TextView>(R.id.tvLocalId).text = order.localId
+        findViewById<TextView>(R.id.tvLocalId).text = order.localId.toString()
         findViewById<TextView>(R.id.tvBitrixId).text = order.bitrixId.toString()
         // ... заполнение остальных полей
 

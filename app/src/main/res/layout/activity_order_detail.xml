@@ -21,6 +21,18 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"/>
 
+        <TextView
+            android:id="@+id/tvBitrixId"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Bitrix ID" />
+
+        <Button
+            android:id="@+id/btnChangeStatus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Изменить статус" />
+
         <!-- Добавьте другие поля -->
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

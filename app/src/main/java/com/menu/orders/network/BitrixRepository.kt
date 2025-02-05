@@ -9,8 +9,22 @@ class BitrixRepository(
 ) {
     // Пример: кэширование данных из API в локальную БД
     suspend fun fetchOrders(): List<OrderItem> {
-        val remoteOrders = apiService.getOrders()
-        orderDao.insertAll(remoteOrders)
-        return remoteOrders
+        val response = apiService.getOrders()
+        if (response.isSuccessful) {
+            val remoteOrders = response.body() ?: emptyList()
+            // Преобразуем List<Order> в List<OrderItem>
+            val orderItems = remoteOrders.map { order ->
+                OrderItem(
+                    // Пример преобразования полей:
+                    id = order.localId,
+                    title = order.toString()
+                )
+            }
+            orderDao.insertAll(orderItems)
+            return orderItems
+        } else {
+            // Обработка ошибки, например, возврат пустого списка или выброс исключения
+            return emptyList()
+        }
     }
 }

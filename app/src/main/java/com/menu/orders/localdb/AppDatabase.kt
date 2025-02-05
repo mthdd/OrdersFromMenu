@@ -1,4 +1,5 @@
-package com.menu.orders.localdb// com.menu.orders.localdb.AppDatabase.kt
+package com.menu.orders.localdb
+
 import androidx.room.Database
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
@@ -10,8 +11,8 @@ import com.menu.orders.model.OrderItemConverter
     version = 1,
     exportSchema = false
 )
-@TypeConverters(OrderItemConverter::class) // Добавьте, если не указали в классе Order
+@TypeConverters(OrderItemConverter::class)
 abstract class AppDatabase : RoomDatabase() {
-    abstract fun orderDao(): Any
+    abstract fun orderDao(): OrderDao
     // ...
 }

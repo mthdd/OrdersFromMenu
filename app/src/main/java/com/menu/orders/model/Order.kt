@@ -1,28 +1,50 @@
 package com.menu.orders.model
 
 import android.graphics.Color
+import androidx.annotation.Keep
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import androidx.room.TypeConverters
+import android.os.Parcel
+import android.os.Parcelable
+
+
+
 
 
 @Entity(tableName = "orders")
 @TypeConverters(OrderItemConverter::class) // Добавьте эту строку
 data class Order(
     @PrimaryKey(autoGenerate = true)
-    val id: Long = 0,
-    val items: List<OrderItem>, // Поле, которое вызывает ошибку
+    val localId: Int,
     val bitrixId: Int,
-    val localId: String,
-    val type: OrderType,
-    val status: OrderStatus,
-    val totalAmount: Double,
-    val comment: String?,
-    val createdAt: Long
-)
-{
-    // Для Room требуется пустой конструктор
-    constructor() : this(0, "", OrderType.IN_HOUSE, OrderStatus.NEW, 0.0, emptyList(), null, 0L)
+    // другие поля
+) : Parcelable {
+    constructor(parcel: Parcel) : this(
+        parcel.readInt(),
+        parcel.readInt(),
+        // чтение других полей
+    )
+
+    override fun writeToParcel(parcel: Parcel, flags: Int) {
+        parcel.writeInt(localId)
+        parcel.writeInt(bitrixId)
+        // запись других полей
+    }
+
+    override fun describeContents(): Int {
+        return 0
+    }
+
+    companion object CREATOR : Parcelable.Creator<Order> {
+        override fun createFromParcel(parcel: Parcel): Order {
+            return Order(parcel)
+        }
+
+        override fun newArray(size: Int): Array<Order?> {
+            return arrayOfNulls(size)
+        }
+    }
 }
 
 enum class OrderType {
@@ -36,10 +58,3 @@ enum class OrderStatus(val colorResId: Int) {
     COMPLETED(Color.GRAY)
 }
 
-@Keep // Добавьте, если используете ProGuard
-data class OrderItem(
-    val name: String,
-    val quantity: Int,
-    val price: Double,
-    val total: Double
-)

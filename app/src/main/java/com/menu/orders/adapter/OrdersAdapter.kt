@@ -1,4 +1,4 @@
-package com.cdr.orders.adapter
+package com.menu.orders.adapter
 
 // OrdersAdapter.kt
 class OrdersAdapter(

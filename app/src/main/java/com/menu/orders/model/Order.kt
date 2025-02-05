@@ -1,4 +1,4 @@
-package com.cdr.orders.model
+package com.menu.orders.model
 
 import android.graphics.Color
 import androidx.room.Entity

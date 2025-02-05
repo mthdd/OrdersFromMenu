@@ -2,9 +2,9 @@
 import androidx.room.Database
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
-import com.cdr.orders.Converters
-import com.cdr.orders.localdb.OrderDao
-import com.cdr.orders.model.Order
+import com.menu.orders.Converters
+import com.menu.orders.localdb.OrderDao
+import com.menu.orders.model.Order
 
 @Database(
     entities = [Order::class],

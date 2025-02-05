@@ -1,4 +1,4 @@
-package com.cdr.orders
+package com.menu.orders
 
 // OrderDetailActivity.kt
 class OrderDetailActivity : AppCompatActivity() {

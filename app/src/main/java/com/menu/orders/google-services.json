@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1043865429500",
+    "project_id": "ordersfrommenu",
+    "storage_bucket": "ordersfrommenu.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1043865429500:android:ac9bae654662728fe37e79",
+        "android_client_info": {
+          "package_name": "com.menu.orders"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCuLIuuiFCIkT4z1ICN62yPowjuro67XVs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

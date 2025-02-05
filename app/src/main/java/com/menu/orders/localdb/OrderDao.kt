@@ -1,11 +1,11 @@
-package com.cdr.orders.localdb
+package com.menu.orders.localdb
 
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import com.cdr.orders.model.Order
-import com.cdr.orders.model.OrderItem
+import com.menu.orders.model.Order
+import com.menu.orders.model.OrderItem
 import kotlinx.coroutines.flow.Flow
 
 @Dao

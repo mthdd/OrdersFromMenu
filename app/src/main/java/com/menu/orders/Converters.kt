@@ -1,4 +1,4 @@
-package com.cdr.orders
+package com.menu.orders
 
 // Converters.kt
 import androidx.room.TypeConverter

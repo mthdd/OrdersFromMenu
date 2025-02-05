@@ -1,4 +1,4 @@
-package com.cdr.orders.model
+package com.menu.orders.model
 
 data class OrderItem(
     val id: Int,

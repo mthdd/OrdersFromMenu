@@ -1,6 +1,6 @@
-package com.cdr.orders.network
+package com.menu.orders.network
 
-import com.cdr.orders.model.Order
+import com.menu.orders.model.Order
 import retrofit2.Response
 import retrofit2.http.Body
 import retrofit2.http.GET

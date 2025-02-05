@@ -1,7 +1,7 @@
-package com.cdr.orders.network
+package com.menu.orders.network
 
-import com.cdr.orders.localdb.OrderDao
-import com.cdr.orders.model.OrderItem
+import com.menu.orders.localdb.OrderDao
+import com.menu.orders.model.OrderItem
 
 class BitrixRepository(
     private val apiService: BitrixApiService,

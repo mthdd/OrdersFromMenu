@@ -1,7 +1,7 @@
-package com.cdr.orders.localdb
+package com.menu.orders.localdb
 
-import com.cdr.orders.model.Order
-import com.cdr.orders.network.BitrixApiService
+import com.menu.orders.model.Order
+import com.menu.orders.network.BitrixApiService
 import kotlinx.coroutines.flow.Flow
 import java.io.IOException
 

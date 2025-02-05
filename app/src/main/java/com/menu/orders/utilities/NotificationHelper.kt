@@ -1,9 +1,9 @@
-package com.cdr.orders.utilities
+package com.menu.orders.utilities
 
 import android.app.NotificationManager
 import android.content.Context
 import androidx.core.app.NotificationCompat
-import com.cdr.orders.model.OrderItem
+import com.menu.orders.model.OrderItem
 import com.menu.orders.R
 
 class NotificationHelper(private val context: Context) {

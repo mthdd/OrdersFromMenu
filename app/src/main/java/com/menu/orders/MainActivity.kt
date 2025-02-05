@@ -5,8 +5,6 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.menu.orders.adapter.PersonActionListener
-import com.menu.orders.adapter.PersonAdapter
 import com.menu.orders.databinding.ActivityMainBinding
 import com.menu.orders.model.Person
 import com.menu.orders.model.PersonListener

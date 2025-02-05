@@ -1,5 +1,14 @@
 package com.menu.orders.adapter
 
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import android.widget.TextView
+import androidx.recyclerview.widget.RecyclerView
+import com.menu.orders.R
+import com.menu.orders.model.Order
+import com.menu.orders.model.OrderType
+
 // OrdersAdapter.kt
 class OrdersAdapter(
     private val orders: List<Order>,
